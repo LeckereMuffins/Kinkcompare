@@ -16,7 +16,9 @@ Run `python kinkcompare.py [options] [names ...]` with the names of the particip
 - `-g`, `--gen-input` Generate the input file the users need to fill out and exit.
 - `-u`, `--uncensored` Never censor partner's responses.
 
-First, the users should use `-g` to generate their input files `inputs/input_NAME.txt` and fill them out. Here, they can indicate a preference by rating the given kinks from `0` to `10`, or by indicating a hard limit using `n`. The format of the input file should not be altered and each line should end with the user's rating. Example:
+First, the users should use `-g` to generate their input files `inputs/input_NAME.txt` and fill them out. Here, they can indicate a preference by rating the given kinks from `0` to `10`, or by indicating a hard limit using `n`. `c` can be used to indicate curiousity and `i` to denote indifference. 
+
+The format of the input file should not be altered and each line should end with the user's rating. Example:
 ```
 Example Kink A - 4
 Example Kink B - 2

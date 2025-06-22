@@ -42,7 +42,7 @@ def parse_inputs(input_paths, singles, doubles):
             for s_id in range(len(singles)):
                 line = input_file.readline()
                 # check validity of line
-                if not re.match("^" + singles[s_id] + r" - (\d|10|n)$", line):
+                if not re.match("^" + singles[s_id] + r" - (\d|10|n|c|i)$", line):
                     print(input_paths[person_id] + ": line " + str(s_id + 1) + " not valid. Aborting.")
                     exit(3)
                 else:
@@ -50,6 +50,10 @@ def parse_inputs(input_paths, singles, doubles):
                     response = line.split(" - ")[-1]
                     if response == "n\n":
                         response = -1
+                    elif response == "c\n":
+                        response = 11
+                    elif response == "i\n":
+                        response = 12
                     singles_results[s_id, person_id] = response
 
             # doubles
@@ -57,7 +61,7 @@ def parse_inputs(input_paths, singles, doubles):
                 for ds in range(2):
                     line = input_file.readline()
                     # check validity of line
-                    if not re.match("^" + doubles[d_id][ds] + r" - (\d|10|n)$", line):
+                    if not re.match("^" + doubles[d_id][ds] + r" - (\d|10|n|c|i)$", line):
                         print(input_paths[person_id] + ": line " + str(len(singles) + d_id + 2) + " not valid. Aborting.")
                         exit(3)
                     else:
@@ -65,12 +69,16 @@ def parse_inputs(input_paths, singles, doubles):
                         response = line.split(" - ")[-1]
                         if response == "n\n":
                             response = -1
-                        doubles_results[d_id, person_id, ds] = response
+                        elif response == "c\n":
+                            response = 11
+                        elif response == "i\n":
+                            response = 12
+                       doubles_results[d_id, person_id, ds] = response
     return (singles_results, doubles_results)
 
 
 def write_outputs(singles_results, doubles_results, persons, uncensored, singles, doubles):
-    legend = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "n"]
+    legend = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "c", "i", "n"]
 
     mkdir("outputs")
 
@@ -90,7 +98,7 @@ def write_outputs(singles_results, doubles_results, persons, uncensored, singles
                 if singles_results[s_id, person_id] < 0 and not uncensored:
                     output.write(f"{singles[s_id]} (n)" + len(other_persons)*" - ###" + "\n")
                 else:
-                    output.write(f"{singles[s_id]} ({singles_results[s_id, person_id]})")
+                    output.write(f"{singles[s_id]} ({legend[singles_results[s_id, person_id]]})")
                     for other_person in other_persons:
                         output.write(f" - {legend[singles_results[s_id, persons.index(other_person)]]}")
                     output.write("\n")
@@ -147,11 +155,11 @@ def write_outputs(singles_results, doubles_results, persons, uncensored, singles
                     output.write(f"{doubles[d_id][0]} | {doubles[d_id][1]}")
 
                     for person_id in range(len(persons)):
-                        if doubles_results[d_id, 0-person_id, 0] >= 0 and doubles_results[d_id, 1-person_id, 1] or uncensored:
+                        if doubles_results[d_id, 0-person_id, 0] >= 0 and doubles_results[d_id, 1-person_id, 1] >= 0 or uncensored:
                             output.write(f" - {legend[doubles_results[d_id, person_id, 0]]}")
                         else:
                             output.write(" - ###")
-                        if doubles_results[d_id, 1-person_id, 0] >= 0 and doubles_results[d_id, 0-person_id, 1] or uncensored:
+                        if doubles_results[d_id, 1-person_id, 0] >= 0 and doubles_results[d_id, 0-person_id, 1] >= 0 or uncensored:
                             output.write(f"|{legend[doubles_results[d_id, person_id, 1]]}")
                         else:
                             output.write("|###")
@@ -162,7 +170,7 @@ def write_outputs(singles_results, doubles_results, persons, uncensored, singles
 
 
 def main(raw_args):
-    arg_parser = ArgumentParser("kinkcompare", description="A tool to compare kink preferences while not revealing that you like something to someone who doesn't. \nRank your preferences from 0 to 10, or use 'n' to fully exclude an item. By default, this will result in you not seeing your partner's response.'", formatter_class=RawTextHelpFormatter)
+    arg_parser = ArgumentParser("kinkcompare", description="A tool to compare kink preferences while not revealing that you like something to someone who doesn't. \nRank your preferences from 0 to 10, or use 'n' to fully exclude an item. By default, this will result in you not seeing your partner's response. 'c' can be used to denote curiousity and 'i' to denote indifference concerning an item.", formatter_class=RawTextHelpFormatter)
 
     arg_parser.add_argument("persons", metavar=("person"),  nargs="*", help="names of the persons to compare. (At least 2 unless -g is specified)")
     arg_parser.add_argument("-l", "--list", metavar="FILENAME", default="kinklist.txt", help="filename of kinklist to use. (default: kinklist.txt)")
