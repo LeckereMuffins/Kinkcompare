@@ -33,7 +33,7 @@ def generate_input(singles, doubles, input_paths):
 
 def parse_inputs(input_paths, singles, doubles):
     singles_results = np.zeros(shape=(len(singles), len(input_paths)), dtype=int)
-    doubles_results = np.zeros(shape=(len(singles), len(input_paths), 2), dtype=int)
+    doubles_results = np.zeros(shape=(len(doubles), len(input_paths), 2), dtype=int)
    
     for person_id in range(len(input_paths)):
         with open(input_paths[person_id], "r") as input_file:
