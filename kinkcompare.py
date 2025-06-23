@@ -41,8 +41,13 @@ def parse_inputs(input_paths, singles, doubles):
             # singles
             for s_id in range(len(singles)):
                 line = input_file.readline()
+
                 # check validity of line
-                if not re.match("^" + singles[s_id] + r" - (\d|10|n|c|i)$", line):
+                if singles[s_id] + " - " != line[:len(singles[s_id]) + 3]:
+                    print(input_paths[person_id] + ": line " + str(s_id + 1) + " not valid. Check if specified kinklist was used to generate input files. Aborting.")
+                    exit(4)
+
+                if not re.match(r"^.* - (\d|10|n|c|i)$", line):
                     print(input_paths[person_id] + ": line " + str(s_id + 1) + " not valid. Aborting.")
                     exit(3)
                 else:
@@ -61,7 +66,11 @@ def parse_inputs(input_paths, singles, doubles):
                 for ds in range(2):
                     line = input_file.readline()
                     # check validity of line
-                    if not re.match("^" + doubles[d_id][ds] + r" - (\d|10|n|c|i)$", line):
+                    if doubles[d_id][ds] + " - " != line[:len(doubles[d_id][ds]) + 3]:
+                        print(input_paths[person_id] + ": line " + str(len(singles) + d_id + 2) + " not valid. Check if specified kinklist was used to generate input files. Aborting.")
+                        exit(4)
+
+                    if not re.match(r"^.* - (\d|10|n|c|i)$", line):
                         print(input_paths[person_id] + ": line " + str(len(singles) + d_id + 2) + " not valid. Aborting.")
                         exit(3)
                     else:
