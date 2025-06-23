@@ -73,7 +73,7 @@ def parse_inputs(input_paths, singles, doubles):
                             response = 11
                         elif response == "i\n":
                             response = 12
-                       doubles_results[d_id, person_id, ds] = response
+                        doubles_results[d_id, person_id, ds] = response
     return (singles_results, doubles_results)
 
 
