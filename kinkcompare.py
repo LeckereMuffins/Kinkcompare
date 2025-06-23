@@ -1,5 +1,5 @@
 import sys
-from argparse import ArgumentParser, ArgumentError, RawTextHelpFormatter
+from argparse import ArgumentParser, RawTextHelpFormatter
 import os
 import numpy as np
 import re
