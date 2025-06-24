@@ -52,6 +52,7 @@ Fictional: Kemonomimi (Cat)
 Fictional: Kemonomimi (Dog/Wolf)
 Fictional: Kemonomimi (Fox)
 Fictional: Kemonomimi (Cow)
+Fictional: Kemonomimi (Bunny)
 Fictional: Kemonomimi (Other)
 Fictional: Furry
 Fictional: Transformation
@@ -86,17 +87,18 @@ Give Massage;Receive Massage
 Give Massage w. happy end;Receive Massage w. happy end
 Giving Vaginal Fisting;Receiving Vaginal Fisting
 Top Teabagging;Bottom Teabagging
-Giving Handjob / Fingering;Receiving Handjob / Getting Fingered
+Giving Handjob;Receiving Handjob
+Giving Fingering;Getting Fingered
 Giving Anal Fingering;Receiving Anal Fingering
 Top Anal Sex;Bottom Anal Sex
 Top Prostate Massage;Bottom Prostate Massage
-Top Oral;Bottom Oral
+Giving Blowjob;Receiving Blowjob
+Giving Cunnilingus;Receiving Cunnilingus
 Top Oral with Dildo;Bottom Oral with Dildo
 Top Deep Throating;Bottom Deep Throating
 Top Facefucking;Bottom Facefucking
 Top Facesitting;Bottom Facesitting
 Groping partner;Getting groped
-Groping partner (without asking first);Getting groped (without asking first)
 Masturbating with partner next to you;Being next to masturbating partner
 Top Anal Fisting;Bottom Anal Fisting
 Top Anal Licking;Bottom Anal Licking
@@ -186,8 +188,8 @@ Dom body part size humiliation;Sub body part size humiliation
 Dom Feminization;Sub Feminization
 Dom Forced Feminization;Sub Forced Feminization
 Dom Body Writing;Sub Body Writing
-Wearing sexy/slutty clothing;Partner wearing sexy/slutty clothing (private)
-Wearing sexy/slutty clothing;Partner wearing sexy/slutty clothing (public)
+Wearing sexy/slutty clothing (private);Partner wearing sexy/slutty clothing (private)
+Wearing sexy/slutty clothing (public);Partner wearing sexy/slutty clothing (public)
 Partner making you wear sexy/slutty clothing (private);Making partner wear sexy/slutty clothing (private)
 Partner making you wear sexy/slutty clothing (public);Making partner wear sexy/slutty clothing (public)
 Dom Nipple Clips;Sub Nipple Clips
